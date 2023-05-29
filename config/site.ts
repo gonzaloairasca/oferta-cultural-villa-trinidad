@@ -1,18 +1,17 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
-  description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+  name: "Oferta Villa Trinidad",
+  description: "Un lugar para encontrar que hacer en Villa Trinidad.",
   mainNav: [
     {
-      title: "Home",
+      title: "Inicio",
       href: "/",
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    twitter: "https://twitter.com/gonzaloairsaca",
+    github: "https://github.com/gonzaloairasca",
+    docs: "https://gonzaloairascaweb.com.ar",
   },
 }
