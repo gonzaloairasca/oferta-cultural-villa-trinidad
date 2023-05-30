@@ -21,3 +21,4 @@ npx create-next-app -e https://github.com/shadcn/next-template
 ## License
 
 Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+"# oferta-cultural-villa-trinidad"  git init git add README.md git commit -m "first commit" git branch -M main git remote add origin https://github.com/gonzaloairasca/oferta-cultural-villa-trinidad.git git push -u origin main

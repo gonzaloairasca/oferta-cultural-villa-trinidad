@@ -1,0 +1,2 @@
+"# oferta-cultural-villa-trinidad"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/gonzaloairasca/oferta-cultural-villa-trinidad.gitgit push -u origin main
+"# oferta-cultural-villa-trinidad"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/gonzaloairasca/oferta-cultural-villa-trinidad.gitgit push -u origin main
