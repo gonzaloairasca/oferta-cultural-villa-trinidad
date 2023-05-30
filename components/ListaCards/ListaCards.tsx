@@ -29,12 +29,16 @@ const ListaCards = ({ data }: { data: Data[] }) => {
                     {data.map((item, index) => (
                         <Link key={index} href={`/${item.name}`}>
                             <Card className="  mb-2 md:grid md:grid-cols-2 " >
-                                <Image
+                                {/* <Image
                                     src={item.img}
                                     alt="Picture of the author"
-                                    width={400}
-                                    height={350}
+                                    width={500}
+                                    height={600}
                                     className="rounded-t-lg md:col-auto md:row-span-2  md:rounded-l-lg md:rounded-r-none "
+                                /> */}
+                                <img src={item.img} alt={item.name}
+
+                                    className="rounded-t-lg md:col-auto md:row-span-2  md:rounded-l-lg md:rounded-r-none object-cover h-[300px]"
                                 />
                                 <CardHeader className="">
                                     <CardTitle>{item.name}</CardTitle>
