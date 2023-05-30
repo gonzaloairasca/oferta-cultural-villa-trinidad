@@ -1,6 +1,38 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import ListaCards from "@/components/ListaCards/ListaCards"
-export default function IndexPage() {
+import Papa from "papaparse"
+
+// https://docs.google.com/spreadsheets/d/e/2PACX-1vScyujdjzb2yFosntrUE5h6QPes-6n-UH89zXZLai_y5TqPpuUVRkwhtpojxaFOj9zdRKwhipYY6QJX/pub?output=csv
+type Data = {
+  id: number,
+  type: string,
+  name: string,
+  date: string,
+  description: string,
+  descriptionDetail: string,
+  adress: string,
+  place: string,
+  img: string
+}
+async function getLinks() {
+  const res = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vScyujdjzb2yFosntrUE5h6QPes-6n-UH89zXZLai_y5TqPpuUVRkwhtpojxaFOj9zdRKwhipYY6QJX/pub?output=csv")
+  const data = await res.text()
+  const parsed = await new Promise<Data[]>((resolve, reject) => {
+    Papa.parse<Data>(data, {
+      header: true, complete: (result) => resolve(result.data),
+      error: reject
+    })
+  })
+  return parsed
+}
+
+
+export default async function IndexPage() {
+  const data = await getLinks()
+  const events: Data[] = data.filter((event) => event.type === "event")
+  const workshops = data.filter((workshop) => workshop.type === "workshop")
+  const gastronomy = data.filter((gastronomy) => gastronomy.type === "gastronomy")
+
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="mx-auto flex  max-w-[980px] flex-col items-start gap-2">
@@ -11,13 +43,13 @@ export default function IndexPage() {
             <TabsTrigger value="gastronomia">Gastronomía</TabsTrigger>
           </TabsList>
           <TabsContent value="eventos">
-            <ListaCards />
+            <ListaCards data={events} />
           </TabsContent>
           <TabsContent value="talleres">
-            <ListaCards />
+            <ListaCards data={workshops} />
           </TabsContent>
           <TabsContent value="gastronomia">
-            <ListaCards />
+            <ListaCards data={gastronomy} />
           </TabsContent>
         </Tabs>
       </div>

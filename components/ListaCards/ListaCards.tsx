@@ -9,28 +9,39 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 
-const ListaCards = () => {
-    const event = [{ name: "pepito", fecha: "12-12-12" }, { name: "pepito", fecha: "12-12-12" }, { name: "pepito", fecha: "12-12-12" }]
+type Data = {
+    id: number,
+    type: string,
+    name: string,
+    date: string,
+    description: string,
+    descriptionDetail: string,
+    adress: string,
+    place: string,
+    img: string
+}
+
+const ListaCards = ({ data }: { data: Data[] }) => {
     return (
         <div>
-            {event.length ? (
+            {data.length ? (
                 <div>
-                    {event.map((evento, index) => (
-                        <Link key={index} href={`/${evento.name}`}>
+                    {data.map((item, index) => (
+                        <Link key={index} href={`/${item.name}`}>
                             <Card className="  mb-2 md:grid md:grid-cols-2 " >
                                 <Image
-                                    src="https://images.pexels.com/photos/920220/pexels-photo-920220.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                    src={item.img}
                                     alt="Picture of the author"
                                     width={400}
                                     height={350}
                                     className="rounded-t-lg md:col-auto md:row-span-2  md:rounded-l-lg md:rounded-r-none "
                                 />
                                 <CardHeader className="">
-                                    <CardTitle>Taller de Guitarra</CardTitle>
-                                    <CardDescription>¡Agarra tu guitarra y únete a nuestro taller de puro rock! Aquí aprenderás a rasgar acordes, hacer solos épicos y darle caña a tus canciones favoritas. No importa si eres un novato o un shredder experimentado, ¡nosotros te llevaremos al siguiente nivel! ¡Inscríbete ya y descubre el poder de las seis cuerdas!</CardDescription>
+                                    <CardTitle>{item.name}</CardTitle>
+                                    <CardDescription>{item.description}</CardDescription>
                                 </CardHeader>
                                 <CardContent className="">
-                                    <p>18 de Octubre - Taller Comunal</p>
+                                    <p>{item.date} - {item.place}</p>
                                 </CardContent>
                             </Card>
                         </Link>
