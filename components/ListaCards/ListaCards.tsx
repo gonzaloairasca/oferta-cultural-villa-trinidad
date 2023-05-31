@@ -28,7 +28,7 @@ const ListaCards = ({ data }: { data: Data[] }) => {
                                     className="rounded-t-lg md:col-auto md:row-span-2  md:rounded-l-lg md:rounded-r-none "
                                 /> */}
                                 <img src={item.img} alt={item.name}
-                                    className="h-[300px] rounded-t-lg object-cover  md:col-auto md:row-span-2 md:rounded-l-lg md:rounded-r-none"
+                                    className=" min-h-[280px] rounded-t-lg object-cover  md:col-auto md:row-span-2 md:rounded-l-lg md:rounded-r-none "
                                 />
                                 <CardHeader className="">
                                     <CardTitle>{item.name}</CardTitle>
