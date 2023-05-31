@@ -1,25 +1,16 @@
+/* eslint-disable @next/next/no-img-element */
 import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import { Data } from "@/types/data"
 import Image from "next/image"
 import Link from "next/link"
 
-type Data = {
-    id: number,
-    type: string,
-    name: string,
-    date: string,
-    description: string,
-    descriptionDetail: string,
-    adress: string,
-    place: string,
-    img: string
-}
+
 
 const ListaCards = ({ data }: { data: Data[] }) => {
     return (
@@ -27,7 +18,7 @@ const ListaCards = ({ data }: { data: Data[] }) => {
             {data.length ? (
                 <div>
                     {data.map((item, index) => (
-                        <Link key={index} href={`/${item.name}`}>
+                        <Link key={index} href={`/ofer/${item.slug}`}>
                             <Card className="  mb-2 md:grid md:grid-cols-2 " >
                                 {/* <Image
                                     src={item.img}
@@ -37,8 +28,7 @@ const ListaCards = ({ data }: { data: Data[] }) => {
                                     className="rounded-t-lg md:col-auto md:row-span-2  md:rounded-l-lg md:rounded-r-none "
                                 /> */}
                                 <img src={item.img} alt={item.name}
-
-                                    className="rounded-t-lg md:col-auto md:row-span-2  md:rounded-l-lg md:rounded-r-none object-cover h-[300px]"
+                                    className="h-[300px] rounded-t-lg object-cover  md:col-auto md:row-span-2 md:rounded-l-lg md:rounded-r-none"
                                 />
                                 <CardHeader className="">
                                     <CardTitle>{item.name}</CardTitle>

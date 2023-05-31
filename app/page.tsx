@@ -1,20 +1,10 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import ListaCards from "@/components/ListaCards/ListaCards"
 import Papa from "papaparse"
-
+import { Data } from "@/types/data"
+export const revalidate = 10; // revalidate this page
 // https://docs.google.com/spreadsheets/d/e/2PACX-1vScyujdjzb2yFosntrUE5h6QPes-6n-UH89zXZLai_y5TqPpuUVRkwhtpojxaFOj9zdRKwhipYY6QJX/pub?output=csv
-type Data = {
-  id: number,
-  type: string,
-  name: string,
-  date: string,
-  description: string,
-  descriptionDetail: string,
-  adress: string,
-  place: string,
-  img: string
-}
-async function getLinks() {
+export async function getLinks() {
   const res = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vScyujdjzb2yFosntrUE5h6QPes-6n-UH89zXZLai_y5TqPpuUVRkwhtpojxaFOj9zdRKwhipYY6QJX/pub?output=csv")
   const data = await res.text()
   const parsed = await new Promise<Data[]>((resolve, reject) => {
