@@ -16,6 +16,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
             <p className="my-4 md:my-8 ">
                 {item?.descriptionDetail}
             </p>
+            <h3 className="mb-4 font-bold ">Dirección: {item?.adress}</h3>
             <h3 className="mb-4 font-bold ">Fecha: {item?.date}</h3>
         </div>
     )

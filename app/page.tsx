@@ -16,7 +16,6 @@ export async function getLinks() {
   return parsed
 }
 
-
 export default async function IndexPage() {
   const data = await getLinks()
   const events: Data[] = data.filter((event) => event.type === "event")
