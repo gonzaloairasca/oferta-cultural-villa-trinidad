@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image"
-import { getLinks } from "../../page"
+import { getData } from "../../page"
 
 
 
 const page = async ({ params }: { params: { slug: string } }) => {
 
-    const data = await getLinks()
+    const data = await getData()
     const item = data.find((item) => item.slug === params.slug)
     console.log(params.slug)
     return (
