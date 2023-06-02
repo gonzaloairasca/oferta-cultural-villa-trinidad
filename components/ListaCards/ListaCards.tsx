@@ -22,17 +22,20 @@ const ListaCards = ({ data }: { data: Data[] }) => {
     }
 
     const reformatedDate = (date: string) => {
-        // Fecha original en el formato "Sat Jun 23 1923 00:00:00 GMT-0400 (hora estándar de Argentina)"
         const fechaOriginal = new Date(date);
-        // Obtener los componentes de la fecha
         const dia = fechaOriginal.getDate();
         const mes = fechaOriginal.getMonth() + 1; // Los meses comienzan desde 0, por lo que debemos sumar 1
         const anio = fechaOriginal.getFullYear() % 100; // Obtener los últimos dos dígitos del año
-        // Formatear los componentes en el formato deseado "dd/mm/aa"
         const fechaFormateada = `${dia}/${mes}/${anio}`;
         return fechaFormateada
     }
-
+    const msDiff = (date: string) => {
+        const today = new Date
+        const dateOfer = new Date(date)
+        const msDiff = +dateOfer - +today
+        const daysDiff = Math.floor(msDiff / (1000 * 60 * 60 * 24));
+        return daysDiff + 1
+    }
     return (
         <div>
             {data.length ? (
@@ -49,7 +52,7 @@ const ListaCards = ({ data }: { data: Data[] }) => {
                                 </CardHeader>
                                 <CardContent className="">
                                     <p>{reformatedDate(item.date)} - {item.place}</p>
-                                    {compareDates(item.date) ? <h3>Todavía falta</h3> : <h3>Ya pasó</h3>}
+                                    {compareDates(item.date) ? <h3>Falta/n {msDiff(item.date)} día/s</h3> : <h3>Este evento ya pasó</h3>}
                                 </CardContent>
                             </Card>
                         </Link>
